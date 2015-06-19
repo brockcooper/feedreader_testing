@@ -10,5 +10,5 @@ In this project you are given a web-based application that reads RSS feeds. The 
 1. Specs are found in jasmine/spec/feedreader.js
 1. Jasmine test suite tests the functionality of the application, and more specifically the index.html, css/syle.css, and js/app.js files
 
-This pplication can also be viewed online [here]()
+This pplication can also be viewed online [here](http://brockcooper.github.io/feedreader_testing)
 
