@@ -102,19 +102,22 @@ $(function() {
     // support for AJAX request
     beforeEach(function(done) {
       // Load first feed
-      loadFeed(0, done);
-      feed1 = $('.feed').html();
+      loadFeed(0, function() {
+        feed1 = $('.feed').html();
 
-      // Load second feed
-      loadFeed(1, done);
-      feed2 = $('.feed').html();
+        // Load second feed
+        loadFeed(1, function() {
+          feed2 = $('.feed').html();
+          done();
+        });
+      });
     });
 
     /* Ensures when a news feed is loaded by the loadFeed function that the 
      * content actually changes.
      */
     it('should load a new feed and the content changes', function() {
-     expect(feed1 == feed2).toBe(false);
+      expect(feed1).not.toEqual(feed2);
     });
   });
 }());
