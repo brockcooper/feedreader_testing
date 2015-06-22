@@ -9,13 +9,11 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
-
   /* This is our first test suite - a test suite just contains
   * a related set of tests. This suite is all about the RSS
   * feeds definitions, the allFeeds variable in our application.
   */
   describe('RSS Feeds', function() {
-
       /* Ensures that the allFeeds variable has been 
        * defined and that it is not empty. 
        */
@@ -24,24 +22,22 @@ $(function() {
           expect(allFeeds.length).not.toBe(0);
       });
 
-
       /* Loops through each feed in the allFeeds object and 
        * ensures it has a URL defined and that the URL is not empty.
        */
       it('should define a URL for each feed in the allFeeds object', function() {
-        for (var i in allFeeds) {
+        for (var i = 0; i < allFeeds.length; i++) {
           expect(allFeeds[i].url).toBeDefined();
           expect(allFeeds[i].url).not.toBe("");
           expect(allFeeds[i].url).not.toBeNull();
         }
       });
 
-
       /* Loops through each feed in the allFeeds object and ensures 
        * it has a name defined and that the name is not empty.
        */
       it('should define a name for each feed in the allFeeds object', function() {
-        for (var i in allFeeds) {
+        for (var i = 0; i < allFeeds.length; i++) {
           expect(allFeeds[i].name).toBeDefined();
           expect(allFeeds[i].name).not.toBe("");
           expect(allFeeds[i].name).not.toBeNull();
@@ -49,12 +45,10 @@ $(function() {
       });
   });
 
-
   /* This test suite tests the functionality of the menu featured
    * throughout the application
    */ 
   describe('Menu feature', function() {
-
     /* Ensures the menu element is hidden by default. Analyzes the
      *  HTML and the CSS to determine how we're performing the
      * hiding/showing of the menu element.
@@ -81,7 +75,6 @@ $(function() {
 
   /* This test suite tests the functionality of the Initial Entries */ 
   describe('Initial Entries', function() {
-
     // support for AJAX request
     beforeEach(function(done) {
       loadFeed(0, done);
@@ -91,14 +84,13 @@ $(function() {
      * there is at least a single .entry element within the .feed container.
      */
     it('should contain at least one .entry element within the .feed container', function() {
-      expect($('.entry').length === 0).not.toBe(true);
+      expect($('.entry').length).toBeGreaterThan(0);
     });
   });     
 
   /* This test suite tests the functionality of the New Feed Selection */ 
   describe('News Feed', function() {
     var feed1, feed2;
-
     // support for AJAX request
     beforeEach(function(done) {
       // Load first feed
